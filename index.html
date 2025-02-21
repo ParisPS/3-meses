@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Eu não existo sem você</h1>
+
+    <section>
+        <h2>Nossa História</h2>
+        <p>Às vezes, parece que um de nós foi criado pelo outro. Desde o primeiro dia, a sintonia foi tão absurda que
+            até assusta. Temos os mesmos gostos, pensamos igual e, o mais engraçado, até nossas piadas seguem a mesma
+            linha de raciocínio. Você até brincou uma vez que parecia que tinha me criado, porque tudo batia
+            perfeitamente. E é isso que faz tudo ser tão especial: somos duas versões da mesma história, vivendo lado a
+            lado, com risadas, viagens planejadas e um carinho que só cresce.</p>
+
+        <p>Nosso amor é único, porque nasceu da amizade, das conversas sem fim e da certeza de que estar juntos sempre
+            faz sentido. Entre provocações sobre Vasco e Corinthians, figurinhas aleatórias e planos de mochilão,
+            percebemos que havia algo muito maior. É o tipo de amor que se constrói nos pequenos detalhes, como no jeito
+            que você me chama de “meu bem”, ou como nossas conversas sempre fluem sem esforço. É leve, natural
+            e, mais importante, verdadeiro.</p>
+
+        <p>O primeiro passo para essa história acontecer foi quase por acaso. Você estava prestes a excluir sua conta,
+            mas, por sorte, esperou uns dias a mais. E nesse tempo, eu apareci. Uma simples mensagem: "bora bora fazer um
+            mochilão” e, sem saber, já estávamos iniciando algo muito maior. Começamos falando de viagens, depois de
+            futebol - com direito a piadas sobre Vasco e Corinthians -, e por fim, música. E ali, sem que percebêssemos,
+            já tínhamos nos encontrado de verdade.</p>
+    </section>
+
+    <section>
+        <h2>Memórias em Mensagens</h2>
+        <div class="gallery">
+            <img src="/img/conversa1.png" alt="Conversa 1" onclick="openModal(this)">
+            <img src="/img/conversa2.png" alt="Conversa 2" onclick="openModal(this)">
+            <img src="/img/conversa3.png" alt="Conversa 3" onclick="openModal(this)">
+            <img src="/img/conversa4.png" alt="Conversa 4" onclick="openModal(this)">
+            <img src="/img/conversa5.png" alt="Conversa 5" onclick="openModal(this)">
+            <img src="/img/conversa6.png" alt="Conversa 6" onclick="openModal(this)">
+            <img src="/img/conversa7.png" alt="Conversa 7" onclick="openModal(this)">
+            <img src="/img/conversa8.png" alt="Conversa 8" onclick="openModal(this)">
+            <img src="/img/conversa9.png" alt="Conversa 8" onclick="openModal(this)">
+        </div>
+    </section>
+
+    <!-- Modal (Pop-up) -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <section>
+        <h2>Momentos Inesquecíveis</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="img/foto1.jpeg" alt="Foto 1">
+                <img src="img/foto2.jpeg" alt="Foto 2">
+                <img src="img/foto3.jpeg" alt="Foto 3">
+                <img src="img/foto4.jpeg" alt="Foto 4">
+                <img src="img/foto5.jpeg" alt="Foto 5">
+                <img src="img/foto6.jpeg" alt="Foto 6">
+                <img src="img/foto7.jpeg" alt="Foto 7">
+                <img src="img/foto8.jpeg" alt="Foto 8">
+                <img src="img/foto9.jpeg" alt="Foto 9">
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let index = 0;
+            const slides = document.querySelectorAll(".carousel img");
+            const totalSlides = slides.length;
+    
+            function showSlide(n) {
+                index = (n + totalSlides) % totalSlides; // Garantir loop infinito
+                const offset = -index * 100;
+                document.querySelector(".carousel").style.transform = `translateX(${offset}%)`;
+            }
+    
+            function nextSlide() {
+                showSlide(index + 1);
+            }
+    
+            setInterval(nextSlide, 3000); // Troca de imagem a cada 3 segundos
+        });
+    </script>
+    
+
+    <section>
+        <h2>"Seu Balancê" - Minha Vascaína</h2>
+        <button onclick="document.getElementById('audioEla').play()">Tocar</button>
+        <audio id="audioEla" src="/audio/minha princesa.mp3"></audio>
+    </section>
+
+    <section>
+        <h2>"Algo Contigo" - Seu Corinthiano</h2>
+        <button onclick="document.getElementById('audioEu').play()">Tocar</button>
+        <audio id="audioEu" src="/audio/seu principe.mp3"></audio>
+    </section>
+
+    <section>
+        <h2>Contagem Regressiva</h2>
+        <p>Nosso reencontro em março:</p>
+        <div id="countdownReencontro" class="countdown"></div>
+
+        <p>Desde o dia que nos conhecemos:</p>
+        <div id="countupConhecemos" class="countdown"></div>
+
+        <p>Desde o dia que começamos a namorar:</p>
+        <div id="countupNamoro" class="countdown"></div>
+    </section>
+
+    <script>
+        function countdown(targetDate, elementId) {
+            function updateCountdown() {
+                const now = new Date();
+                const target = new Date(targetDate);
+                let diff = target - now;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById(elementId).innerText = `${days} dias, ${hours}h ${minutes}m ${seconds}s`;
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        function countUp(startDate, elementId) {
+            function updateCountUp() {
+                const now = new Date();
+                const start = new Date(startDate);
+                let diff = now - start;
+
+                const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+                const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+                const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById(elementId).innerText = `${years} anos, ${months} meses, ${days} dias, ${hours}h ${minutes}m ${seconds}s`;
+            }
+            updateCountUp();
+            setInterval(updateCountUp, 1000);
+        }
+
+        countdown("2025-03-27", "countdownReencontro");
+        countUp("2024-09-13", "countupConhecemos");
+        countUp("2024-11-23", "countupNamoro");
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function checkTime() {
+            const hour = new Date().getHours();
+            const body = document.body;
+            
+            if (hour >= 18 || hour < 6) {
+                body.classList.add("dark-mode");
+            } else {
+                body.classList.remove("dark-mode");
+            }
+        }
+
+        checkTime();
+        setInterval(checkTime, 60000); // Verifica a cada 1 minuto para garantir a atualização
+    });
+</script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
